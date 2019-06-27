@@ -14,3 +14,18 @@ h1, h2, h3, h4, h5, h6 {
   margin:0;
   padding:0;
 }
+.body {
+  background: image_url('morocco.png');
+  font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+.navbar {
+  background: image_url(light-grey-terrazzo.png);
+  box-shadow: 0px 1px 3px #2a2a2a;
+}
+.navbar-inverse .navbar-brand {
+  color: #1F85DE;
+  letter-spacing: -0.3px;
+  font-familt: 'fontspring-demo-1-questa_light-webfont';
+  font-size:26px;
+}
+

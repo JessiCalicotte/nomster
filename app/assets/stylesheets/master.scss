@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6 {
   padding:0;
 }
 .body {
-  background: asset-path('morocco_3/morocco.png');
+  background: image_url('/assets/morocco.png');
   font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
 }
 .navbar {

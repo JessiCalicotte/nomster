@@ -10,7 +10,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   end
 
   def create
-    current_user.places.create(place_params)
+    current_user.places.create(place_params[:id])
     redirect_to root_path
   else
     render :new, status: :unprocessable_entity

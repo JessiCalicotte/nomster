@@ -15,6 +15,7 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   else
     render :new, status: :unprocessable_entity
   end
+end
  
 
   def show
@@ -32,6 +33,8 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
     else
       render :edit, status: :unprocessable_entity
   end
+end
+
 
 
 def destroy
@@ -70,7 +73,7 @@ end
 def name
     @name = Place.find(params[:id])
     if @place.user != current_user
-    return render plain: 'Not Allowed', status: :forbidden
+    return render plain: 'Not Allowed', status: :forbidden, length: { maximum: 140, minimum: 3 }
   end
     @place.name
     redirect_to root_path

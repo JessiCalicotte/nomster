@@ -32,11 +32,10 @@ def destroy
 end
 def edit
   @place = Place.find(params[:id])
-
   if @place.user != current_user
     return render plain: 'Not Allowed', status: :forbidden
   end
-end 
+end
 
 
   private
@@ -46,4 +45,3 @@ end
   end
 
 
-end

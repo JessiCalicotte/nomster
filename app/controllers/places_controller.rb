@@ -48,6 +48,23 @@ def edit
     if @place.user != current_user
     return render plain: 'Not Allowed', status: :forbidden
   end
+
+def address
+    @address = Place.find(params[:id])
+    if @place.user != current_user
+    return render plain: 'Not Allowed', status: :forbidden
+  end
+    @place.address
+    redirect_to root_path
+end
+
+def description
+    @description = Place.find(params[:id])
+    if @place.user != current_user
+    return render plain: 'Not Allowed', status: :forbidden
+  end
+    @place.description
+    redirect_to root_path
 end
 
 

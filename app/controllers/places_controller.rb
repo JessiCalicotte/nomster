@@ -34,7 +34,7 @@ end
     else
       render :edit, status: :unprocessable_entity
   end
-
+end
 
 
 
@@ -87,4 +87,5 @@ end
     params.require(:place).permit(:name, :description, :address)
   end
 
+end
 end

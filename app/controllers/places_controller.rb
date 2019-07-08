@@ -10,14 +10,17 @@ before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destro
   end
 
   def create
-  @place = current_user.places.create(place_params)
-  if @place.valid?
+  @place = current_user.places.new(allowed_params)
+  if @place.save
     redirect_to root_path
   else
     render :new, status: :unprocessable_entity
   end
 end 
  
+def allowed_params
+    params.require(:place).permit(:name, :address, :description)
+end 
 
   def show
     @place = Place.find(params[:id])

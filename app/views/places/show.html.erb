@@ -9,17 +9,16 @@
       margin: 0;
       padding: 0;
     }
-    #map {
-      height: 100%;
-    }
+
 <% if @place.latitude.present? && @place.longitude.present? %>
+
   <script>
 
     function initMap() {
       var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
 
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
+        zoom: 4,
         center: myLatLng
       });
 
@@ -29,14 +28,17 @@
         title: 'Hello World!'
       });
     }
- </script>
+
+  </script>
   <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiHnA-_9nO1eCUQLPW_YdtAIvsij_VppE=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMoJKgLDL2XkzZzQ064K9wF7JqdQESvUI=initMap">
   </script>
 
   <div id="map"></div>
 <% end %>
+
 <br />
+
 <div class="float-right">
   <% if current_user && current_user == @place.user %>
     <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>

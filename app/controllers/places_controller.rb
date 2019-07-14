@@ -92,5 +92,10 @@ end
     params.require(:place).permit(:name, :description, :address)
   end
 
+def photo
+  @photo = Place_id.find(params[:id])
+  @photo = Caption.new
+  end
+end
 end
 end

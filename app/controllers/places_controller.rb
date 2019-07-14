@@ -25,7 +25,7 @@ end
   def show
     @place = Place.find(params[:id])
     @comment = Comment.new
-    @photo = Photo.Find(params[:id])
+   
   end
 
   def update
@@ -92,10 +92,6 @@ end
     params.require(:place).permit(:name, :description, :address)
   end
 
-def photo
-  @photo = Place_id.find(params[:id])
-  @photo = Caption.new
-  end
-end
+
 end
 end

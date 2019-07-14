@@ -25,7 +25,7 @@ end
   def show
     @place = Place.find(params[:id])
     @comment = Comment.new
-   
+    @photo = Photo.find(params[:id])
   end
 
   def update

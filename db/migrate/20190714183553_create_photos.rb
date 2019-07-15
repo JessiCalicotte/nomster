@@ -1,12 +1,10 @@
 class CreatePhotos < ActiveRecord::Migration[5.2]
-  def change
-    create_table :photos do |t|
-      t.text :caption
-      t.integer :place_id
-      t.timestamps
-
+  devise_for :users
+  root 'places#index'
+  resources :places do
+      resources :comments, only: :create
       resources :photos
-      
-    end
   end
+  resources :users, only: :show
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

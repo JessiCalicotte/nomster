@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  #root 'places#index'
+  root 'places#index'
   resources :places do
-    post '/places/:place_id/photos(.:format)', to: 'photos#show', as: :place_photo_path
-    resources :comments, only: :create
-    resources :photo do 
-
-    end
-    end
-    end
+      resources :comments, only: :create
+      resources :photos
+  end
+  resources :users, only: :show
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+end
 

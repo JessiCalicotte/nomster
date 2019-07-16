@@ -10,6 +10,10 @@ def create
 
    private
 
+    def show
+    @photo = Photo.new
+  end
+
   def photo_params
     params.require(:Place_id).permit(:photo, :caption)
   end

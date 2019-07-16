@@ -101,9 +101,15 @@
     </blockquote>
   </div>
 <% end %>
-</div>
-<div class="float-right">
+
+<div class="row">
 <% @place.photos.each do |photo| %>
+<div class="col-12 col-sm-6">
+<% end %>
+</div>
+</div>
+
+<div class="float-right">
 <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
   <%= f.input :user %>
   <%= f.input :place %>
@@ -112,5 +118,4 @@
 <% end %>
 </div>
 </div>
-
 

@@ -103,10 +103,12 @@
 <% end %>
 </div>
 <div class="float-right">
+<% @place.photos.each do |photo| %>
 <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
   <%= f.input :user %>
   <%= f.input :place %>
   <%= f.submit "Add a photo", class: 'btn btn-primary' %>
+</div>
 <% end %>
 </div>
 </div>

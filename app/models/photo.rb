@@ -1,6 +1,6 @@
 class Photo < ApplicationRecord
   belongs_to :user
-  has_many :places
+  has_many :place
   has_many :comments
 
   geocoded_by :address

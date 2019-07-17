@@ -109,13 +109,6 @@
 </div>
 </div>
 
-<div class="float-right">
-<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-  <%= f.input :user %>
-  <%= f.input :place %>
-  <%= f.submit "Add a photo", class: 'btn btn-primary' %>
-</div>
-<% end %>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Add a photo

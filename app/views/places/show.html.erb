@@ -102,12 +102,10 @@ puts
 <% end %>
 
   <div class="booyah-box col-10 offset-1">
-    <h1><%= link_to place.name, place.name_photos_path(@place) %></h1><br />
-    <i><%= photo.address %></i><br />
-    <p><%= photo.description %></p><br />
-
-    <% if photos.user.present? %>
-      <small><%= photo.user.email %></small>
+    <h1><%= link_to @place.name, place_photos_path(@place) %></h1><br />
+    <i><%= @place.name.description %></p><br />
+    <% if @place.name.user.present? %>
+      <small><%= @place.name.user.email %></small>
     <% end %>
 <% if place.photos.present? %>
     <div class="col-12">

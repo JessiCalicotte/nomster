@@ -87,33 +87,23 @@
 
 <div class="clear"></div>
 
-<div class="row">
-<% @place.photos.each do |photo| %>
-puts 
-  <div class="col-12 col-sm-6">
-    <blockquote>
-     <% if comment.humanized_rating.present? %>
-        <b><%= comment.humanized_rating %></b> -
-      <% end %>
-      <%= comment.message %>
-      <small><%= comment.user.email %></small>
-    </blockquote>
-  </div>
-<% end %>
-
-  <div class="booyah-box col-10 offset-1">
-    <h1><%= link_to @place.name, place_photos_path(@place) %></h1><br />
-    <i><%= @place.name.description %></p><br />
-    <% if @place.name.user.present? %>
-      <small><%= @place.name.user.email %></small>
-    <% end %>
-<% if place.photos.present? %>
-    <div class="col-12">
-      <blockquote>
-        <% if photo.humanized_rating.present? %>
-          <b><%= photo.humanized_rating %></b> -
+<% @place.comments.each do |comment| %>
+            <div class="col-12 col-sm-6">
+                <blockquote class="comment">
+                    <% if comment.humanized_rating.present? %>
+                        <b><%= comment.humanized_rating %></b> - <%= comment.message %>
+                    <% end %>
+                    <small>- <%= comment.user.email %></small>
+                </blockquote>
+            </div>
         <% end %>
-        <%= place.photo.last.message %>
+
+<% @place.photos.each do |photo| %>
+    <div class="col-12 col-sm-6">
+      <blockquote class="photo">
+        <% if photo.humanized_rating.present? %>
+          <b><%= photo.humanized_rating %></b> - <%= photo.caption %>
+        <% end %>
         <small><%= place.photo.last.user.email %></small>
       </blockquote>
     </div>
@@ -148,7 +138,6 @@ puts
       </div>
       <% end %>
     </div>
-  </div>
-</div>
+  <% end %>
 
 

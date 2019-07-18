@@ -1,10 +1,8 @@
 class Photo < ApplicationRecord
   belongs_to :user
   belongs_to :place
+mount_uploader :picture, PictureUploader
   
-
-  geocoded_by :address
-  after_validation :geocode
-  
-  validates :name, presence: true
+  validates :picture, presence: true
+  validates :caption, presence: true
 end

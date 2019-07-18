@@ -88,24 +88,33 @@
 <div class="clear"></div>
 
 <% @place.comments.each do |comment| %>
-            <div class="col-12 col-sm-6">
-                <blockquote class="comment">
-                    <% if comment.humanized_rating.present? %>
-                        <b><%= comment.humanized_rating %></b> - <%= comment.message %>
-                    <% end %>
-                    <small>- <%= comment.user.email %></small>
-                </blockquote>
-            </div>
+       <div class="col-12 col-sm-6">
+         <blockquote class="comment">
+         <% if comment.humanized_rating.present? %>
+         <b><%= comment.humanized_rating %></b> - <%= comment.message %>
         <% end %>
-
+        <small>- <%= comment.user.email %></small>
+       </blockquote>
+       </div>
+        <% end %>
+ <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+    <%= f.input :caption %>
+    <%= f.input :picture %>
+    <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
+  <% end %>
+<div>
 <% @place.photos.each do |photo| %>
-    <div class="col-12 col-sm-6">
-      <blockquote class="photo">
-        <% if photo.humanized_rating.present? %>
-          <b><%= photo.humanized_rating %></b> - <%= photo.caption %>
-        <% end %>
-        <small><%= place.photo.last.user.email %></small>
-      </blockquote>
+    <div class="clear"></div>
+  <div class="row">
+    <% @place.photos.each do |photo| %>
+      <div class="col-12 col-sm-6">
+      <%= image_tag photo.picture.url, class: 'img-fluid' %>
+    <small><%= photo.caption %></small>
+    <small><%= photo.user.email %></small>
+    </blockquote>
+    <%= photo.caption %>
+    <small><%= photo.user.email %></small>
+    </blockquote>
     </div>
   <% end %>
 
@@ -138,6 +147,7 @@
       </div>
       <% end %>
     </div>
-  <% end %>
+    <% end %>
+ 
 
 

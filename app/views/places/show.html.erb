@@ -3,13 +3,6 @@
 <i><%= @place.address %></i>
 <br/><br/>
 <p><%= @place.description %></p> 
-<style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-</style>
 
 <% if @place.latitude.present? && @place.longitude.present? %>
 
@@ -49,44 +42,40 @@
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Add a comment</h4>
-      </div>
-  <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-        <div class="modal-body">
-          <%= f.input :message %>
-          <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
-        </div>
-      <% end %>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+<!-- Button trigger modal Comments -->
 <div class="col-10 offset-1">
   <h1 class="float-left">Comments</h1>
-  <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
     Add a comment
   </button>
 </div>
+<div class="booyah-box col-10 offset-1">
+<!-- Modal Comments-->
+<div class="modal fade" id="CommentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <div class="modal-content">
+  <div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">×</span>
+  </button>
+  <h5 class="modal-title" id="CommentModal">Add a comment</h5>
+  </div>
+  <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+    <div class="modal-body">
+      <%= f.input :message %>
+      <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+     <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+  </div>
+  <% end %>
+  </div>
+  </div>
+</div>
 
 <div class="clear"></div>
-
+<div class="row">
 <% @place.comments.each do |comment| %>
        <div class="col-12 col-sm-6">
          <blockquote class="comment">
@@ -97,24 +86,24 @@
        </blockquote>
        </div>
         <% end %> 
- 
+ </div>
 
-<!-- Button trigger modal -->
+<!-- Photo Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Add a photo
 </button>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--Photo Modal -->
+<div class="modal fade" id="PhotoModal" tabindex="-1" role="dialog" aria-labelledby="PhotoModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="PhotoModal">Modal title</h4>
       </div>
       <div class="modal-body">
-      <h4 class="modal-title" id="myModalLabel">Add a photo</h4>
+      <h4 class="modal-title" id="PhotoModal">Add a photo</h4>
       </div>
       <div class="modal-body">
       <%= f.input :user %>
@@ -123,31 +112,42 @@
        <% end %>
        <div class="modal-footer">
        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <%= f.submit "Add a photo", class: 'btn btn-primary' %>
-      <%= simple_form_for @photo, url: photo.picture.url |f| %>
-      <div class="modal-body">
-    <%= f.input :caption %>
-    <%= f.input :picture %>
-    <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
-  <% end %>
-      </div>
-    <% @place.photos.each do |photo| %>
-    <div class="clear"></div>
+  <!-- photo modal -->
+  <div class="modal fade" id="PhotoModal" tabindex="-1" role="dialog" aria-labelledby="PhotoModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <div class="modal-content">
+  <div class="modal-header">
+  <h5 class="modal-title" id="PhotoModal">Add a Photo</h5>
+  <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+  </div>    
+<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+  <div class="modal-body">
+        <%= f.input :picture %>
+        <%= f.input :caption %>
+  </div>
+  <div class="modal-footer">  
+       <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <%= f.submit "Add a Photo", class: 'btn btn-primary' %>      
+</div>
+<% end %>      
+</div>
+</div>
+</div>
+    <!--Photo button trigger modal -->
+  </div>
+  <div class="clear"></div>
   <div class="row">
-    <% @place.photos.each do |photo| %>
-      <div class="col-12 col-sm-6">
-      <%= image_tag photo.picture.url, class: 'img-fluid' %>
-    <small><%= photo.caption %></small>
-    <small><%= photo.user.email %></small>
+  <div class="col-12 col-sm-6">
+  <%#= image_tag photo.picture.url %>
+    <div style="width: 100px; height: 100px; background-image: url( <%=photo.picture.url%>); background-size: contain;"> </div>
     </blockquote>
     <%= photo.caption %>
     <small><%= photo.user.email %></small>
     </blockquote>
     </div>
-  <% end %>
-      <% end %>
     </div>
     <% end %>
- </div>
-
+    </div>
 

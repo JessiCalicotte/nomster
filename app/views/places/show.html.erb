@@ -107,9 +107,6 @@
           <h4 class="modal-title" id="PhotoModal">Add a photo</h4>
           </div>
           <div class="modal-body">
-          <%= f.input :user %>
-          <%= f.input :place %>
-       </div>
        <div class="modal-footer">
        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <!-- photo modal -->
@@ -141,12 +138,7 @@
              <div class="clear"></div>
              <div class="row">
              <div class="col-12 col-sm-6">
-       <%#= image_tag photo.picture.url %>
-             <div style="width: 100px; height: 100px; background-image: url( <%=photo.picture.url%>); background-size: contain;"> </div>
              </blockquote>
-            <%= photo.caption %>
-          <small><%= photo.user.email %></small>
-          </blockquote>
         </div>
         
 

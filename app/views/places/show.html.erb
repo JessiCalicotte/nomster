@@ -46,13 +46,14 @@
 
         <div class="col-10 offset-1">
           <h1 class="float-left">Comments</h1>
-          <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
+          <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="commentmodal">
             Add a comment
           </button>
         </div>
-   <div class="clear"></div><br />
+   
    
 <!-- Modal Comments-->
+<div class="clear"></div><br />
 <div class="row">
 <% @place.comments.each do |comment| %>
   <div class="col-12 col-sm-6">
@@ -70,7 +71,7 @@
 <br/><hr><br/>
 <div class="clear"><br /></div>
 <!-- Comment trigger modal -->
-<div class="modal fade" id="commentmodal" tabindex="-1" role="dialog" aria-labelledby="commentmodal" aria-hidden="true">
+<div class="modal fade" id="commentmodal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -96,24 +97,25 @@
 
 
 <!-- Photo Button trigger modal -->
+<div class="clear"></div>
 <div class="col-10 offset-1">
 <h1 class="float-left">Photos</h1>
-  <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="PhotoModal">
+  <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="photoModal">
   Add a photo
 </button>
 <br/><br/>
 
 <!--Photo Modal -->
-<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
+<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="photoModalLabel">Add a Photo</h4>
+        <h4 class="modal-title" id="photoModal">Add a Photo</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+     <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
         <div class="modal-body">
           <%= f.input :picture %>
           <%= f.input :caption %>
@@ -127,13 +129,13 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="clear"><br /></div>
 
 <!--Added Photo-->
+<div class="clear"><br /></div>
 <div class="row">
 <% @place.photos.each do |photo| %>
   <div class="col-12 col-sm-6">
-      <%#= image_tag photo.picture.url %>
+      <%= image_tag photo.picture.url %>
     <blockquote>
       <%= photo.caption %>
       <small><%= photo.user.email %></small>

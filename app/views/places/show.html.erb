@@ -134,13 +134,16 @@
 </div>
 
     <!--Photo button trigger modal -->
-             </div>
              <div class="clear"></div>
              <div class="row">
              <div class="col-12 col-sm-6">
+              <% @place.photos.each do |photo| %>
+              <%= image_tag photo.picture.url %>
              </blockquote>
-        </div>
-        
-
-
-
+             <%= photo.caption %>
+             <small><%= photo.user.email %></small>
+           </blockquote>
+         </div>
+       </div>
+       <% end %>
+  

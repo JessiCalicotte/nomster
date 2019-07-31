@@ -3,10 +3,8 @@ before_action :authenticate_user!
 
 def create
   @place = Place.find(params[:place_id])
-  @photo = Caption.new
-  @photo.create(photo_params.merge(user: current_user))
-  redirect_to photo_path(@place)
-  end
+  @place.photos.create(photo_params.merge(user: current_user))
+    redirect_to place_path(@place)  end
 
   private
 

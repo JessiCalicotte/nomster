@@ -23,9 +23,9 @@
   <div class="col-6 offset-3">
     <blockquote>
     <% if place.photos.last.picture.present? %>
-    <%= image_tag place.photo.last.photo.url %>
+    <%= link_to image_tag(place.photos.last.picture.url, class: 'img-thumbnail') %>
     <% end %>
-    <%= place.photo.last.caption %>
+    <%= place.photos.last.caption %>
     </blockquote>
   </div>
   <% end %> 

@@ -100,7 +100,7 @@
 <div class="row col-10 offset-1">
 <% @place.photos.each do |photo| %>
   <div class="img col-10 offset-1">
-      <%= image_tag photo.picture.url %>
+      <%= image_tag photo.picture.url, class: 'img-thumbnail' %>
     <blockquote>
       <%= photo.caption %>
     </blockquote>

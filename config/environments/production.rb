@@ -102,3 +102,4 @@ ActionMailer::Base.smtp_settings = {
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+

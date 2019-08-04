@@ -1,5 +1,4 @@
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-   
   <div class="carousel-inner" role="listbox">
        <div class="carousel-item active">
            <%= image_tag 'slider1.jpg', class: 'd-block img-fluid' %>
@@ -7,14 +6,11 @@
           <h3>Find the best gluten and dairy-free spots in the Springs</h3>
     </div> 
   </div>
-        <div img class="d-block img-fluid" src= 'app/assets/images/slider1.jpg' alt="first slide" %>
-        <div class="carousel-item active">
+  <div class="carousel-item">
         <%= image_tag 'slider2.jpg', class: 'd-block img-fluid' %>
     <div class="carousel-caption d-none d-md-block">
         <h3>Grass-fed, local, gluten free burgers</h3>
     </div>
-  </div>
-       <div img class="d-block img-fluid" src= 'app/assets/images/slider2.jpg', alt="Second slide" %>
 </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="   prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -25,6 +21,7 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
+<br/>
 <div class="row">
 <% @places.each do |place| %>
   <div class="booyah-box col-10 offset-1">
